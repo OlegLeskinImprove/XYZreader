@@ -11,6 +11,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ShareCompat;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.graphics.Palette;
@@ -52,7 +53,6 @@ public class ArticleDetailFragment extends Fragment implements
     private View mRootView;
     private int mMutedColor = 0xFF333333;
     private NestedScrollView mScrollView;
-//    private DrawInsetsFrameLayout mDrawInsetsFrameLayout;
     private ColorDrawable mStatusBarColorDrawable;
 
     private int mTopInset;
@@ -60,6 +60,7 @@ public class ArticleDetailFragment extends Fragment implements
     private ImageView mPhotoView;
     private CollapsingToolbarLayout mCollapsingToolbarLayout;
     private Toolbar mToolbar;
+    private FloatingActionButton mFab;
 
     private int mScrollY;
     private boolean mIsCard = false;
@@ -122,7 +123,10 @@ public class ArticleDetailFragment extends Fragment implements
         mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
         mPhotoContainerView = mRootView.findViewById(R.id.photo_container);
         mCollapsingToolbarLayout = (CollapsingToolbarLayout) mRootView.findViewById(R.id.toolbar_collapsing);
+        mFab = (FloatingActionButton) mRootView.findViewById(R.id.share_fab);
+
         mStatusBarColorDrawable = new ColorDrawable(0);
+        mScrollView = (NestedScrollView) mRootView.findViewById(R.id.scrollview);
         mToolbar = (Toolbar) mRootView.findViewById(R.id.toolbar);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
