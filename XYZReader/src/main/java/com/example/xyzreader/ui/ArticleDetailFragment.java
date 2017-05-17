@@ -56,7 +56,6 @@ public class ArticleDetailFragment extends Fragment implements
     private ColorDrawable mStatusBarColorDrawable;
 
     private int mTopInset;
-    private View mPhotoContainerView;
     private ImageView mPhotoView;
     private CollapsingToolbarLayout mCollapsingToolbarLayout;
     private Toolbar mToolbar;
@@ -119,9 +118,8 @@ public class ArticleDetailFragment extends Fragment implements
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        mRootView = inflater.inflate(R.layout.fragment_article_detail_new, container, false);
+        mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
         mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
-        mPhotoContainerView = mRootView.findViewById(R.id.photo_container);
         mCollapsingToolbarLayout = (CollapsingToolbarLayout) mRootView.findViewById(R.id.toolbar_collapsing);
         mFab = (FloatingActionButton) mRootView.findViewById(R.id.share_fab);
 
@@ -287,16 +285,5 @@ public class ArticleDetailFragment extends Fragment implements
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
         mCursor = null;
         bindViews();
-    }
-
-    public int getUpButtonFloor() {
-        if (mPhotoContainerView == null || mPhotoView.getHeight() == 0) {
-            return Integer.MAX_VALUE;
-        }
-
-        // account for parallax
-        return mIsCard
-               ? (int) mPhotoContainerView.getTranslationY() + mPhotoView.getHeight() - mScrollY
-               : mPhotoView.getHeight() - mScrollY;
     }
 }
